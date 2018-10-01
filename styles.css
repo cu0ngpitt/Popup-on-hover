@@ -1,0 +1,49 @@
+body {
+  background: whitesmoke;
+}
+
+article {
+  padding-top: 50px;
+  text-align: center;
+}
+
+.icon-pic img {
+  width: 80px;
+  height: 80px;
+}
+
+/* everything below here is necessary for the pop up */
+
+.container {
+  margin: 0 auto;
+  position: relative;   /* the container needs to be set to relative positioning */
+  max-width: 50%;       /* a width needs to be set */
+}
+
+article > * {           /* this keeps all the children elements from growing large */
+position: relative;
+}
+
+article::before {       /* must use the before psuedo */
+  position: absolute;
+  content: '';
+  background: lightblue;
+  height: 100%;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 22px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: .5s;
+}
+
+article:hover {
+  z-index: 1;
+}
+
+article:hover::before {  /* this sets how large it will grow */
+	width: 104%;
+	height: 104%;
+	opacity: 1;
+}
